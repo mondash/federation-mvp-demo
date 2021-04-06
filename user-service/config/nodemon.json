@@ -1,0 +1,13 @@
+{
+  "ext": "*",
+  "exec": "yarn codegen && yarn dev",
+  "ignore": [
+    ".git",
+    ".gitignore",
+    ".vscode",
+    "node_modules",
+    "README.md",
+    "LICENSE",
+    "__generated__"
+  ]
+}

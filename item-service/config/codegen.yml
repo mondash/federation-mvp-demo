@@ -1,0 +1,29 @@
+overwrite: true
+schema:
+  - "src/**/*.ts":
+      noRequire: true
+generates:
+  "__generated__/graphql.d.ts":
+    plugins:
+      - add:
+          content:
+            - "declare global {"
+            - "namespace GraphQL {"
+      - add:
+          content: "}}"
+          placement: "append"
+      - typescript:
+          enumsAsTypes: true
+      - typescript-resolvers:
+          contextType: "apollo-server-express#ExpressContext"
+          federation: true
+          noSchemaStitching: true
+          mappers:
+            Item: ../src/modules/Item#ItemMapper
+            User: ../src/modules/Item#UserMapper
+          rootValueType: "undefined"
+          useIndexSignature: true
+  "__generated__/graphql-introspection.json":
+    plugins:
+      - introspection:
+          federation: true

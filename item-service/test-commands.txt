@@ -1,0 +1,19 @@
+yarn apollo service:push \
+  --graph=service-template \
+  --key=service:service-template:faKuUhK6tK8wOtIhJuBtuw \
+  --variant=current \
+  --endpoint=http://localhost:4000/graphql
+
+yarn apollo service:push \
+  --graph=service-template \
+  --key=service:service-template:faKuUhK6tK8wOtIhJuBtuw \
+  --variant=current \
+  --localSchemaFile=./__generated__/graphql-introspection.json
+
+yarn apollo service:push \
+  --graph=service-template \
+  --key=service:service-template:faKuUhK6tK8wOtIhJuBtuw \
+  --variant=current \
+  --serviceName=products \
+  --serviceURL=http://products-graphql.svc.cluster.local:4001/ \
+  --localSchemaFile=./schema.gql # (or --endpoint)

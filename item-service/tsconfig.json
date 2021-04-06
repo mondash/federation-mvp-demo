@@ -1,0 +1,12 @@
+{
+  "extends": "./config/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "rootDir": "src",
+    "baseUrl": "src",
+    "paths": {
+      "*": ["./*", "../node_modules/*"]
+    }
+  },
+  "include": ["src", "__generated__"]
+}
