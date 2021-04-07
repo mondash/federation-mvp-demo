@@ -2,13 +2,13 @@ import { GraphQLSchemaModule } from "apollo-graphql";
 import { UserInputError } from "apollo-server-core";
 import { gql } from "apollo-server-express";
 
-export type ItemMapper = {
+export type Item = {
   id: string;
   name: string;
   owner: string;
 };
 
-export type UserMapper = {
+export type User = {
   id: string;
 };
 
@@ -45,7 +45,7 @@ const typeDefs = gql`
   }
 `;
 
-const fetchItem = (id: string): ItemMapper => {
+const fetchItem = (id: string): Item => {
   const item = items.find(item => item.id === id);
 
   if (!item) throw new UserInputError("Item not found.");
@@ -53,7 +53,7 @@ const fetchItem = (id: string): ItemMapper => {
   return item;
 }
 
-const fetchUserItems = (userId: string): ItemMapper[] =>
+const fetchUserItems = (userId: string): Item[] =>
   items.filter(item => item.owner === userId);
 
 export const resolvers: GraphQL.Resolvers = {
@@ -63,7 +63,7 @@ export const resolvers: GraphQL.Resolvers = {
   },
   Mutation: {
     addItem: (_, { input }) => {
-      const newItem: ItemMapper = {
+      const newItem: Item = {
         id: String(items.length),
         name: input.name,
         owner: input.owner,

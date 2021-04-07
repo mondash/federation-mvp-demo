@@ -19,8 +19,9 @@ generates:
           federation: true
           noSchemaStitching: true
           mappers:
-            Item: ../src/modules/Item#ItemMapper
-            User: ../src/modules/Item#UserMapper
+            Item: ../src/modules/Item#Item
+            User: ../src/modules/Item#User
+          mapperTypeSuffix: Mapper
           rootValueType: "undefined"
           useIndexSignature: true
   "__generated__/graphql-introspection.json":
